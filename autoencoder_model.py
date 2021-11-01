@@ -31,10 +31,12 @@ history = model.fit(np.array(X_train), np.array(X_train),
 # visualise training/validation loss
 plt.plot(history.history['loss'], 'b', label='Training loss')
 plt.plot(history.history['val_loss'], 'r', label='Validation loss')
+plt.title('Trainging/Validation Loss')
 plt.legend(loc='upper right')
 plt.xlabel('Epochs')
 plt.ylabel('Loss, [mse]')
 plt.ylim([0, .1])
+plt.savefig('training_validation_loss.png')
 plt.show()
 
 # distribution of loss function in the training set
@@ -47,7 +49,9 @@ scored['Loss_mae'] = np.mean(np.abs(X_pred-X_train), axis=1)
 
 plt.figure()
 sns.histplot(scored['Loss_mae'], bins=10, kde=True, color='blue')
+plt.title('MAE Loss')
 plt.xlim([0.0, .5])
+plt.savefig('MAE_Loss.png')
 plt.show()
 
 # let's try a threshold of 0.3 for flagging anomaly

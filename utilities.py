@@ -36,6 +36,8 @@ print(merged_data.head())
 dataset_train = merged_data['2004-02-12 11:02:39':'2004-02-13 23:52:39']
 dataset_test = merged_data['2004-02-13 23:52:39':]
 dataset_train.plot(figsize=(12, 6))
+plt.title('Training Data: Normal Operating Conditions')
+plt.savefig('Training Data')
 plt.show()
 
 scaler = preprocessing.MinMaxScaler()
@@ -43,6 +45,7 @@ scaler = preprocessing.MinMaxScaler()
 X_train = pd.DataFrame(scaler.fit_transform(dataset_train),
                        columns=dataset_train.columns,
                        index=dataset_train.index)  # Random shuffle training data
+
 X_train.sample(frac=1)
 
 X_test = pd.DataFrame(scaler.transform(dataset_test),
@@ -63,7 +66,7 @@ X_test_PCA.index = X_test.index
 # calculate the covariance matrix
 
 
-def cov_matrix(data, verbose=False):
+def cov_matrix(data):
     covariance_matrix = np.cov(data, rowvar=False)
     if is_pos_def(covariance_matrix):
         inv_covariance_matrix = np.linalg.inv(covariance_matrix)
@@ -78,7 +81,7 @@ def cov_matrix(data, verbose=False):
 # calculate the Mahalanobis distance
 
 
-def MahalanobisDist(inv_cov_matrix, mean_distr, data, verbose=False):
+def MahalanobisDist(inv_cov_matrix, mean_distr, data):
     inv_covariance_matrix = inv_cov_matrix
     vars_mean = mean_distr
     diff = data - vars_mean
@@ -91,7 +94,7 @@ def MahalanobisDist(inv_cov_matrix, mean_distr, data, verbose=False):
 # detecting outliers
 
 
-def MD_detectOutliers(dist, extreme=False, verbose=False):
+def MD_detectOutliers(dist, extreme=False):
     k = 3. if extreme else 2.
     threshold = np.mean(dist) * k
     outliers = []
@@ -104,7 +107,7 @@ def MD_detectOutliers(dist, extreme=False, verbose=False):
 # calculate threshold for classifying datapoint as anomaly
 
 
-def MD_threshold(dist, extreme=False, verbose=False):
+def MD_threshold(dist, extreme=False):
     k = 3. if extreme else 2.
     threshold = np.mean(dist) * k
     return threshold
