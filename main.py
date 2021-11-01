@@ -258,3 +258,4 @@ scored = pd.concat([scored_train, scored])
 
 # results from the autoencoder model
 scored.plot(logy=True,  figsize=(10, 6), ylim=[1e-2, 1e2], color=['blue', 'red'])
+plt.show()
