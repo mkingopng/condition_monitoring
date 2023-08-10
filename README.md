@@ -3,14 +3,12 @@ Anyone with experience in production environment knows how important it is to mi
 
 Today, most equipment comes with a vast array of built-in sensors. Collecting and processing this data, and using it as an input into a Machine Learning is a practical solution for critical eequipment condition monitoring and predictive maintenance.
 
-Predictive maintenance is the process of identifying a leading indicator "signal" which reliable indicates impending component failure. Mathematically, this is not a new area of study. The advent of low cost data collection and processing, and performant models, allows 
+Predictive maintenance is the process of identifying a leading indicator "signal" which reliable indicates impending component failure. Mathematically, this is not a new area of study. The advent of low-cost data collection and processing, and performant models, makes reliable real-time prediction possible. Reducing unplanned downtime to near 0 is realistic and commercially viable.
 
 ## Dataset Description
-Four bearings were installed on a shaft. The rotation speed was kept constant at 2000 RPM by an AC motor coupled to the shaft via rub belts. A radial load of 6000 lbs is applied onto the shaft and bearing by a spring mechanism. All bearings are force lubricated.
+Four bearings were installed on a shaft. The rotation speed was kept constant at 2000 RPM by an AC motor coupled to the shaft via rub belts. A radial load of 6000 lbs is applied onto the shaft and bearing by a spring mechanism. All bearings are force lubricated. Rexnord ZA-2115 double row bearings were installed on the shaft as shown in Figure 1. PCB 353B33 High Sensitivity Quartz ICP accelerometers were installed on the bearing housing (two accelerometers for each bearing [x- and y-axes] for data set 1, one accelerometer for each bearing for data sets 2 and 3). Sensor placement is also shown in Figure 1. All failures occurred after exceeding designed life time of the bearing which is more than 100 million revolutions.
 
-Rexnord ZA-2115 double row bearings were installed on the shaft as shown in Figure 1. PCB 353B33 High Sensitivity Quartz ICP accelerometers were installed on the bearing housing (two accelerometers for each bearing [x- and y-axes] for data set 1, one accelerometer for each bearing for data sets 2 and 3). Sensor placement is also shown in Figure 1. All failures occurred after exceeding designed life time of the bearing which is more than 100 million revolutions.
-Dataset Structure
-
+## Dataset Structure
 Three (3) data sets are included in the data packet (IMS-Rexnord Bearing Data.zip). Each data set describes a test-to-failure experiment. Each data set consists of individual files that are 1-second vibration signal snapshots recorded at specific intervals. Each file consists of 20,480 points with the sampling rate set at 20 kHz. The file name indicates when the data was collected. Each record (row) in the data file is a data point. Data collection was facilitated by NI DAQ Card 6062E. Larger intervals of time stamps (showed in file names) indicate resumption of the experiment in the next working day.
 
 ### Set No. 1:
